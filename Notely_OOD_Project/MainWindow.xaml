@@ -5,9 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="850">
+        Title="MainWindow" Height="600" Width="850" Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="listBxNoteBoard" HorizontalAlignment="Left" Height="330" VerticalAlignment="Top" Width="546" Margin="10,232,0,0"/>
+
+        <ListBox x:Name="listBxNoteBoard" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="530" Margin="26,217,0,0"/>
+        <Button x:Name="btnChangeView" Content="Change View" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="26,192,0,0"/>
+        <Button x:Name="btnSort" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="116,192,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="311,36,0,0" TextWrapping="Wrap" Text="Welcome to Notely!" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
+        <Button x:Name="btnAddNote" Content="Add Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="377,87,0,0"/>
+
+        <Canvas x:Name="canvasDetails" HorizontalAlignment="Left" Height="326" Margin="570,217,0,0" VerticalAlignment="Top" Width="254">
+
+           
+        </Canvas>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="666,514,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="581,226,0,0" TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="14"/>
+        <TextBlock x:Name="txtBlkDetails" HorizontalAlignment="Left" Margin="583,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="235" Width="227"/>
+
+
 
     </Grid>
 </Window>

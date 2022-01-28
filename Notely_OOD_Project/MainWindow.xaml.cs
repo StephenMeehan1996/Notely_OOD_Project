@@ -20,9 +20,15 @@ namespace Notely_OOD_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<>
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
