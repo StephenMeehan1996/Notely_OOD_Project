@@ -39,7 +39,77 @@ namespace Notely_OOD_Project
             notes.Add(note4);
 
 
+
+
+            string[] priorities = { "Relaxed", "Important", "Urgent", "Critical" };
+            comboPriority.ItemsSource = priorities;
+
             listBxNoteBoard.ItemsSource = notes;
+
+        }
+
+        private void listBxNoteBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Note selectedNote = listBxNoteBoard.SelectedItem as Note;
+
+            if (selectedNote != null)
+            {
+                DisplayDetails(selectedNote);
+
+            }
+
+            else
+            {
+                clearDetails();
+            }
+            
+        }
+
+        private void clearDetails()
+        {
+            txtBTitle.Text = null;
+            comboPriority.SelectedItem = null ;
+            datePicker.SelectedDate = null;
+
+            txtBTime.Text = null;
+            txtBContent.Text = null;
+
+        }
+
+        private void DisplayDetails(Note selectedNote)
+        {
+            txtBTitle.Text = selectedNote.Title;
+            comboPriority.SelectedItem = selectedNote.Prior.ToString();
+            datePicker.SelectedDate = selectedNote.CompleationDate;
+
+            txtBTime.Text = selectedNote.CompleationDate.TimeOfDay.ToString();
+            txtBContent.Text = selectedNote.Content;
+
+            
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Note selectedNote = listBxNoteBoard.SelectedItem as Note;
+
+            if (selectedNote != null)
+            {
+                selectedNote.Title = txtBTitle.Text;
+                // selectedNote.Prior = comboPriority.SelectedItem.ToString() as Note.Priority;
+                selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
+                selectedNote.Content = txtBContent.Text;
+
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = notes;
+
+            }
+        
+
+
+
+
+
+            //ammend object with new info
 
         }
     }
