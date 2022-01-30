@@ -9,8 +9,8 @@ namespace Notely_OOD_Project
     class Note
     {
         public string Title { get; set; }
+        public Priority Prior { get; set; }
         public DateTime CompleationDate { get; set; }
-        //public enum Priority { get; set; }
         public string Content { get; set; }
 
      public enum Priority
@@ -18,12 +18,14 @@ namespace Notely_OOD_Project
         Relaxed,
         Important, 
         Urgent,
-        Top
+        Critical
 
     }
-        public Note(string title, DateTime compleationDate, string content )
+       
+    public Note(string title, Priority prior, DateTime compleationDate, string content )
         {
             this.Title = title;
+            this.Prior = prior;
             this.CompleationDate = compleationDate;
             this.Content = content;
 
@@ -36,7 +38,9 @@ namespace Notely_OOD_Project
 
         public override string ToString()
         {
-            return string.Format($"Title: {Title} - {CompleationDate} | Content: {Content}");
+         // use of short date string can be changed//
+         // in the details tab the time can be displayed if its added by the user// 
+            return string.Format($"Title: {Title} - {CompleationDate.ToShortDateString()} | Content: {Content}");
         }
     }
 }
