@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Notely_OOD_Project
 {
-    class Note
+    class Note : IComparable
     {
         public string Title { get; set; }
         public Priority Prior { get; set; }
@@ -41,6 +41,12 @@ namespace Notely_OOD_Project
          // use of short date string can be changed//
          // in the details tab the time can be displayed if its added by the user// 
             return string.Format($"Title: {Title} - {CompleationDate.ToShortDateString()} | Content: {Content}");
+        }
+
+        public int CompareTo(object obj)
+        {
+            Note otherNote = obj as Note;
+            return this.Prior.CompareTo(otherNote.Prior);
         }
     }
 }

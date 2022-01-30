@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,6 +134,7 @@ namespace Notely_OOD_Project
                 selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
                 selectedNote.Content = txtBContent.Text;
 
+                comboDisplay.SelectedItem = "All";
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = notes;
 
@@ -231,6 +233,38 @@ namespace Notely_OOD_Project
 
                 }
             }
+        }
+
+        private void btnSort_Click(object sender, RoutedEventArgs e)
+        {
+            notes.Sort();
+            notes.Reverse();
+            listBxNoteBoard.ItemsSource = null;
+            listBxNoteBoard.ItemsSource = notes;
+        }
+
+        private void btnPrintReport_Click(object sender, RoutedEventArgs e)
+        {
+            string path = @"c:\College_Work\Year2\sem2\OOD\Project\Notely_OOD_Project\NoteReport.txt";
+
+
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("--------------------");
+                sw.WriteLine($"   Note Report - {DateTime.Now.ToShortDateString()}");
+                sw.WriteLine("--------------------");
+                sw.WriteLine("      ------");
+                
+                foreach (Note note in notes)
+                {
+                    sw.WriteLine(note);
+                }
+                sw.WriteLine("--------------------");
+
+            }
+
+
         }
     }
 }
