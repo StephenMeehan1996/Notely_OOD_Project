@@ -9,10 +9,11 @@
     <Grid>
 
         <ListBox x:Name="listBxNoteBoard" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="530" Margin="26,217,0,0" SelectionChanged="listBxNoteBoard_SelectionChanged"/>
-        <Button x:Name="btnChangeView" Content="Change View" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="26,192,0,0"/>
-        <Button x:Name="btnSort" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="116,192,0,0"/>
+        <Button x:Name="btnChangeView" Content="Change View" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="185,192,0,0"/>
+        <Button x:Name="btnSort" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="273,192,0,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="311,36,0,0" TextWrapping="Wrap" Text="Welcome to Notely!" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
-        <Button x:Name="btnAddNote" Content="Add Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="377,87,0,0"/>
+        <Button x:Name="btnAddNote" Content="Add Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="377,87,0,0" Click="btnAddNote_Click"/>
+
 
         <Canvas x:Name="canvasDetails" HorizontalAlignment="Left" Height="326" Margin="570,217,0,0" VerticalAlignment="Top" Width="254">
             <ComboBox x:Name="comboPriority" Width="120" RenderTransformOrigin="0.508,0.5" Canvas.Left="116" Canvas.Top="66"/>
@@ -31,6 +32,9 @@
         <TextBox x:Name="txtBTime" HorizontalAlignment="Left" Height="23" Margin="686,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90" Margin="581,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
         <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,316,0,0" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,196,0,0" TextWrapping="Wrap" Text="Display:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <ComboBox x:Name="comboDisplay" HorizontalAlignment="Left" Margin="82,190,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="comboDisplay_SelectionChanged"/>
+
 
 
 

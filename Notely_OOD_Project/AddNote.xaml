@@ -1,0 +1,34 @@
+﻿<Window x:Class="Notely_OOD_Project.AddNote"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notely_OOD_Project"
+        mc:Ignorable="d"
+        Title="AddNote" Height="450" Width="390">
+    <Grid>
+        
+
+        <TextBlock HorizontalAlignment="Left" Margin="36,27,0,0" TextWrapping="Wrap" Text="Add Note" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="16"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="36,68,0,0" TextWrapping="Wrap" Text="Title:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,105,0,0" TextWrapping="Wrap" Text="Priority:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,140,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,167,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <TextBlock HorizontalAlignment="Left" Margin="34,201,0,0" TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+        <TextBox x:Name="txtBTitle" HorizontalAlignment="Left" Height="23" Margin="107,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtBTime" HorizontalAlignment="Left" Height="23" Margin="107,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90" Margin="97,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,95,0,0" Width="120" RenderTransformOrigin="0.5,0.5">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.566"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
+        <TextBox x:Name="txtBAddDate" HorizontalAlignment="Left" Height="23" Margin="107,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>
