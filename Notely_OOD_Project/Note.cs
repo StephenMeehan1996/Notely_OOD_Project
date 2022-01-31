@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Notely_OOD_Project
 {
-    class Note : IComparable
+    public class Note : IComparable
     {
         public string Title { get; set; }
         public Priority Prior { get; set; }

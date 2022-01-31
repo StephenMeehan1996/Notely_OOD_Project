@@ -28,7 +28,7 @@ namespace Notely_OOD_Project
     
     public partial class MainWindow : Window
     {
-        List<Note> notes = new List<Note>();
+       public List<Note> notes = new List<Note>();
         public MainWindow()
         {
             InitializeComponent();
@@ -80,36 +80,6 @@ namespace Notely_OOD_Project
             
         }
 
-        private void DisableEdit()
-        {
-            txtBTitle.IsEnabled = false;
-            comboPriority.IsEnabled = false;
-            datePicker.IsEnabled = false;
-            txtBTime.IsEnabled = false;
-            txtBContent.IsEnabled = false;
-
-        }
-        private void EnableEdit()
-        {
-            txtBTitle.IsEnabled = true;
-            comboPriority.IsEnabled = true;
-            datePicker.IsEnabled = true;
-            txtBTime.IsEnabled = true;
-            txtBContent.IsEnabled = true;
-
-
-        }
-
-        private void clearDetails()
-        {
-            txtBTitle.Text = null;
-            comboPriority.SelectedItem = null ;
-            datePicker.SelectedDate = null;
-            txtBTime.Text = null;
-            txtBContent.Text = null;
-
-        }
-
         private void DisplayDetails(Note selectedNote)
         {
             EnableEdit();
@@ -130,7 +100,7 @@ namespace Notely_OOD_Project
             if (selectedNote != null)
             {
                 selectedNote.Title = txtBTitle.Text;
-                // selectedNote.Prior = comboPriority.SelectedItem.ToString() as Note.Priority;
+                
                 selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
                 selectedNote.Content = txtBContent.Text;
 
@@ -152,7 +122,11 @@ namespace Notely_OOD_Project
         private void btnAddNote_Click(object sender, RoutedEventArgs e)
         {
             AddNote add = new AddNote();
+          // add.Parent. = this;
             add.ShowDialog();
+
+           
+            //AddNote.
 
             
 
@@ -264,6 +238,38 @@ namespace Notely_OOD_Project
 
             }
 
+
+        }
+
+
+        // backround methods // 
+        private void DisableEdit()
+        {
+            txtBTitle.IsEnabled = false;
+            comboPriority.IsEnabled = false;
+            datePicker.IsEnabled = false;
+            txtBTime.IsEnabled = false;
+            txtBContent.IsEnabled = false;
+
+        }
+        private void EnableEdit()
+        {
+            txtBTitle.IsEnabled = true;
+            comboPriority.IsEnabled = true;
+            datePicker.IsEnabled = true;
+            txtBTime.IsEnabled = true;
+            txtBContent.IsEnabled = true;
+
+
+        }
+
+        private void clearDetails()
+        {
+            txtBTitle.Text = null;
+            comboPriority.SelectedItem = null;
+            datePicker.SelectedDate = null;
+            txtBTime.Text = null;
+            txtBContent.Text = null;
 
         }
     }
