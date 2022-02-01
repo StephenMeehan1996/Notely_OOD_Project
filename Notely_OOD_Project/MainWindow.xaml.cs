@@ -36,15 +36,18 @@ namespace Notely_OOD_Project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Note note1 = new Note("Study for Maths Test", Note.Priority.Important, new DateTime(2022, 01, 31), "Study for Exam");
-            Note note2 = new Note("Go for Run", Note.Priority.Relaxed, new DateTime(2022, 02, 02), "Go For Run in the woods");
-            Note note3 = new Note("Complete Web Dev Project", Note.Priority.Critical, new DateTime(2022, 02, 17), "Complete and upload build to Git");
-            Note note4 = new Note("Complete OOD LabSheet", Note.Priority.Urgent, new DateTime(2022, 02, 05), "Complete and upload this weeks labsheet");
+            //Note note1 = new Note("Study for Maths Test", Note.Priority.Important, new DateTime(2022, 01, 31), "Study for Exam");
+            //Note note2 = new Note("Go for Run", Note.Priority.Relaxed, new DateTime(2022, 02, 02), "Go For Run in the woods");
+            //Note note3 = new Note("Complete Web Dev Project", Note.Priority.Critical, new DateTime(2022, 02, 17), "Complete and upload build to Git");
+            //Note note4 = new Note("Complete OOD LabSheet", Note.Priority.Urgent, new DateTime(2022, 02, 05), "Complete and upload this weeks labsheet");
 
-            notes.Add(note1);
-            notes.Add(note2);
-            notes.Add(note3);
-            notes.Add(note4);
+
+            CreateRandomNotes();
+            // returns list of random notes // 
+            //notes.Add(note1);
+            //notes.Add(note2);
+            //notes.Add(note3);
+            //notes.Add(note4);
 
             DisableEdit();
 
@@ -59,7 +62,71 @@ namespace Notely_OOD_Project
 
             listBxNoteBoard.ItemsSource = notes;
 
+            
+
         }
+
+        #region RandomListCreation
+
+        // two methods to create random test days when problem starts// 
+        // adds the random objects into list declared at top//
+        private void CreateRandomNotes()
+        {
+            string[] t = { "Make Bed", "Study for Maths Test", "Tidy the House", "Go for a walk", "Complete Web Dev Project", "Write In Journal", "Prepare Dinner", "Do the Weekly Shop" };
+            string[] c = { "Get Up five minutes early to make bed", "Continue studying Q1-3 for exam", "Spend 30 minutes cleaning the house", "Take 1 hour out, to go for walk", "Upload build of project to Git - Finish report", "Write weekly update in Journal", "Prepare Dinner for the next 3 days", "complete shopping for the week" };
+
+            List<string> titles = new List<string>(t);
+            List<string> content = new List<string>(c);
+
+            Random ran = new Random();
+
+            for (int i = 0; i < 4; i++)
+            {
+               
+                int index = ran.Next(0, titles.Count);
+                int numDays = ran.Next(0, 20);
+                int priorIndex = ran.Next(0, 3);
+
+                notes.Add(new Note(titles[index], PriorityOffDays(numDays), DateTime.Now.AddDays(numDays), content[index]));
+
+                titles.Remove(titles[index]);
+                content.Remove(content[index]);
+
+            }
+        }
+
+        // conditional statement assigns Priority based on how many there is to complete note// 
+        private Note.Priority PriorityOffDays( int index)
+        {
+            Note.Priority p = Note.Priority.Relaxed;
+
+            if (index <= 5)
+            {
+                p = Note.Priority.Critical;
+
+            }
+
+            else if (index > 5 && index <= 10)
+            {
+                p = Note.Priority.Urgent;
+            }
+
+            else if (index > 10 && index <= 15)
+            {
+                p = Note.Priority.Important;
+            }
+
+            else
+            {
+                p = Note.Priority.Relaxed;
+            }
+
+            return p;
+        }
+        #endregion
+
+
+
 
         private void listBxNoteBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -161,6 +228,8 @@ namespace Notely_OOD_Project
         private void comboDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<Note> filteredList = new List<Note>();
+
+            // bug if there is no object of that priority type list does not appear empty // 
 
             string selected = comboDisplay.SelectedItem as string;
 
