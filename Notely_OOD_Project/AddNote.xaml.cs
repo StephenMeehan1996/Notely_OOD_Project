@@ -38,7 +38,7 @@ namespace Notely_OOD_Project
 
         private void btnCreateNote_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = this.Parent as MainWindow;
+            MainWindow main = this.Owner as MainWindow;
 
             
 
@@ -53,8 +53,10 @@ namespace Notely_OOD_Project
 
 
 
-             main.listBxNoteBoard.ItemsSource = null;
-             main.listBxNoteBoard.ItemsSource = main.notes;
+             //main.listBxNoteBoard.ItemsSource = null;
+             //main.listBxNoteBoard.ItemsSource = main.notes;
+
+            this.Close();
         }
 
         private Note.Priority GetPriority()

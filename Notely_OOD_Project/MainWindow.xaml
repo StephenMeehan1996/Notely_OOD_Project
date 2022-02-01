@@ -20,7 +20,7 @@
 
 
         </Canvas>
-        <Button x:Name="btnEdit" Content="Save Changes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="651,512,0,0" Height="31" Click="btnEdit_Click"/>
+        <Button x:Name="btnEdit" Content="Save Changes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="595,499,0,0" Height="31" Click="btnEdit_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="581,226,0,0" TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="16"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="581,261,0,0" TextWrapping="Wrap" Text="Title:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
@@ -35,6 +35,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="26,196,0,0" TextWrapping="Wrap" Text="Display:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
         <ComboBox x:Name="comboDisplay" HorizontalAlignment="Left" Margin="82,190,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="comboDisplay_SelectionChanged"/>
         <Button x:Name="btnPrintReport" Content="Print Report" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="416,87,0,0" Click="btnPrintReport_Click"/>
+        <Button x:Name="btnDelete" Content="Delete " HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="700,499,0,0" Height="31" Click="btnDelete_Click"/>
 
 
 

@@ -102,6 +102,7 @@ namespace Notely_OOD_Project
                 selectedNote.Title = txtBTitle.Text;
                 
                 selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
+                selectedNote.Prior = GetPriority();
                 selectedNote.Content = txtBContent.Text;
 
                 comboDisplay.SelectedItem = "All";
@@ -111,24 +112,49 @@ namespace Notely_OOD_Project
             }
         
 
+        }
 
+        private Note.Priority GetPriority()
+        {
+            Note.Priority selected = Note.Priority.Critical;
 
+            switch (comboPriority.SelectedItem)
+            {
+                case "Relaxed":
+                    selected = Note.Priority.Relaxed;
+                    break;
+                case "Important":
+                    selected = Note.Priority.Important;
+                    break;
+                case "Urgent":
+                    selected = Note.Priority.Urgent;
+                    break;
+                case "Critical":
+                    selected = Note.Priority.Critical;
+                    break;
+                default:
+                    break;
+            }
 
-
-            //ammend object with new info
-
+            return selected;
         }
 
         private void btnAddNote_Click(object sender, RoutedEventArgs e)
         {
             AddNote add = new AddNote();
-          // add.Parent. = this;
+             add.Owner = this;
             add.ShowDialog();
 
-           
-            //AddNote.
+
+            listBxNoteBoard.ItemsSource = null;
+            listBxNoteBoard.ItemsSource = notes;
+
 
             
+
+            //AddNote.
+
+
 
         }
 
@@ -238,6 +264,8 @@ namespace Notely_OOD_Project
 
             }
 
+            MessageBox.Show("Report Successful, File created in main folder");
+
 
         }
 
@@ -271,6 +299,20 @@ namespace Notely_OOD_Project
             txtBTime.Text = null;
             txtBContent.Text = null;
 
+        }
+
+    
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Note selected = listBxNoteBoard.SelectedItem as Note;
+
+            if (selected != null)
+            {
+                notes.Remove(selected);
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = notes;
+            }
         }
     }
 }
