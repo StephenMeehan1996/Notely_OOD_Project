@@ -6,40 +6,82 @@
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="850" Loaded="Window_Loaded">
-    <Grid>
+    <DockPanel>
 
-        <ListBox x:Name="listBxNoteBoard" HorizontalAlignment="Left" Height="326" VerticalAlignment="Top" Width="530" Margin="26,217,0,0" SelectionChanged="listBxNoteBoard_SelectionChanged"/>
-        <Button x:Name="btnChangeView" Content="Change View" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="185,192,0,0"/>
-        <Button x:Name="btnSort" Content="Sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="273,192,0,0" Click="btnSort_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="311,36,0,0" TextWrapping="Wrap" Text="Welcome to Notely!" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
-        <Button x:Name="btnAddNote" Content="Add Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="336,87,0,0" Click="btnAddNote_Click"/>
+        <Grid DockPanel.Dock="Top">
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
 
-        <Canvas x:Name="canvasDetails" HorizontalAlignment="Left" Height="326" Margin="570,217,0,0" VerticalAlignment="Top" Width="254">
-            <ComboBox x:Name="comboPriority" Width="120" RenderTransformOrigin="0.508,0.5" Canvas.Left="116" Canvas.Top="66"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
+            <Button x:Name="btnAddNote" Content="Add Note" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="-20 0 0 0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click"/>
+            <Button x:Name="btnPrintReport" Content="Print Report" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Margin="0 0 -10 0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click"/>
+            
+        </Grid>
+        <StackPanel  Margin=" 30 0 30 55" DockPanel.Dock="Right" VerticalAlignment="Bottom">
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="16"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Title:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+            <TextBox x:Name="txtBTitle" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Priority:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+            <ComboBox x:Name="comboPriority" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.003,0.929" />
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+            <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="120"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+            <TextBox x:Name="txtBTime" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
+            <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+            
+           
+            <Button x:Name="btnEdit" Content="Save Changes"  Width="80"  Height="31" Click="btnEdit_Click"/>
+            <Button x:Name="btnDelete" Content="Delete "  Width="80"  Height="31" Click="btnDelete_Click"/>
 
-        </Canvas>
-        <Button x:Name="btnEdit" Content="Save Changes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="595,499,0,0" Height="31" Click="btnEdit_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,226,0,0" TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="16"/>
+        </StackPanel>
+        <Grid DockPanel.Dock="left" MinWidth="30">
+            
+        </Grid>
+    <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Left" Margin="581,261,0,0" TextWrapping="Wrap" Text="Title:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,292,0,0" TextWrapping="Wrap" Text="Priority:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,322,0,0" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,352,0,0" TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <TextBlock HorizontalAlignment="Left" Margin="581,383,0,0" TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <TextBox x:Name="txtBTitle" HorizontalAlignment="Left" Height="23" Margin="686,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtBTime" HorizontalAlignment="Left" Height="23" Margin="686,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90" Margin="581,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="686,316,0,0" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,196,0,0" TextWrapping="Wrap" Text="Display:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-        <ComboBox x:Name="comboDisplay" HorizontalAlignment="Left" Margin="82,190,0,0" VerticalAlignment="Top" Width="92" SelectionChanged="comboDisplay_SelectionChanged"/>
-        <Button x:Name="btnPrintReport" Content="Print Report" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="416,87,0,0" Click="btnPrintReport_Click"/>
-        <Button x:Name="btnDelete" Content="Delete " HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="700,499,0,0" Height="31" Click="btnDelete_Click"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="232,-68,0,0" VerticalAlignment="Top" Width="100"/>
-
-
-
+            <TextBlock HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"  TextWrapping="Wrap" Text="Display:" VerticalAlignment="Bottom" Margin="0 0 0 0"   FontFamily="UD Digi Kyokasho NP-B"/>
+            <ComboBox x:Name="comboDisplay" Grid.Row="0" Grid.Column="1"   VerticalAlignment="Bottom" HorizontalAlignment="Center" MinWidth="55" Margin="0 0 0 0"  SelectionChanged="comboDisplay_SelectionChanged"/>
+            <Button x:Name="btnChangeView" Padding="2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Content="Change View" HorizontalAlignment="Center"  Margin="0 0 0 0" />
+            <Button x:Name="btnSort" Content="Sort" Padding="2" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75"  Click="btnSort_Click"/>
+            <ListBox x:Name="listBxNoteBoard" Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="7" HorizontalAlignment="Left" MinHeight="326" VerticalAlignment="Top" Margin="-50 0 0 0"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>
+    
 
     </Grid>
+    </DockPanel>
 </Window>
