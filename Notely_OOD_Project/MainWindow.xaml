@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="850" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="850" MinWidth="750" Loaded="Window_Loaded">
     <DockPanel>
 
         <Grid DockPanel.Dock="Top">
@@ -29,9 +29,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
-            <Button x:Name="btnAddNote" Content="Add Note" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="-20 0 0 0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click"/>
-            <Button x:Name="btnPrintReport" Content="Print Report" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Margin="0 0 -10 0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="0" Grid.Column="3" TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" Margin ="0 20 0 0" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20"/>
+            <Button x:Name="btnAddNote" Content="Add Note" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="-20 20 0 0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click"/>
+            <Button x:Name="btnPrintReport" Content="Print Report" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Margin="0 20 -10 0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click"/>
             
         </Grid>
         <StackPanel  Margin=" 30 0 30 55" DockPanel.Dock="Right" VerticalAlignment="Bottom">
@@ -55,7 +55,11 @@
         <Grid DockPanel.Dock="left" MinWidth="30">
             
         </Grid>
-    <Grid DockPanel.Dock="Bottom">
+
+        <Grid DockPanel.Dock="Bottom" >
+            
+        </Grid>
+    <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
