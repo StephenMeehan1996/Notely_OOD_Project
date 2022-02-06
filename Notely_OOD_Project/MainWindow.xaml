@@ -35,7 +35,7 @@
             <Button x:Name="btnPrintReport" Content="Print Report" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Margin="0 20 -10 0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click"/>
             
         </Grid>
-        <StackPanel  Margin=" 30 0 30 55" DockPanel.Dock="Right" VerticalAlignment="Bottom">
+        <StackPanel x:Name="StackPanelDetails"   Margin=" 30 0 30 55" DockPanel.Dock="Right" VerticalAlignment="Bottom">
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Details" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="16"/>
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Title:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
             <TextBox x:Name="txtBTitle" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -61,7 +61,7 @@
             
         </Grid>
         
-    <Grid x:Name="mainGrid" >
+    <Grid x:Name="mainGrid" AllowDrop="True"  >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -81,7 +81,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"  TextWrapping="Wrap" Text="Display:" VerticalAlignment="Bottom" Margin="0 0 0 0"   FontFamily="UD Digi Kyokasho NP-B"/>
+            <TextBlock x:Name="txtBxDisplay" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"  TextWrapping="Wrap" Text="Display:" VerticalAlignment="Bottom" Margin="0 0 0 0"   FontFamily="UD Digi Kyokasho NP-B"/>
             <ComboBox x:Name="comboDisplay" Grid.Row="0" Grid.Column="1"   VerticalAlignment="Bottom" HorizontalAlignment="Center" MinWidth="55" Margin="0 0 0 0"  SelectionChanged="comboDisplay_SelectionChanged"/>
             <Button x:Name="btnChangeView" Padding="2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Content="Change View" HorizontalAlignment="Center" Click="btnChangeView_Click"   />
             <Button x:Name="btnSort" Content="Sort" Padding="2" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="65"  Click="btnSort_Click"/>

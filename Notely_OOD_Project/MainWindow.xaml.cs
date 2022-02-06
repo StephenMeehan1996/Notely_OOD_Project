@@ -216,13 +216,18 @@ namespace Notely_OOD_Project
         private void btnAddNote_Click(object sender, RoutedEventArgs e)
         {
             AddNote add = new AddNote();
-             add.Owner = this;
+            add.Owner = this;
             add.ShowDialog();
 
 
             listBxNoteBoard.ItemsSource = null;
             listBxNoteBoard.ItemsSource = notes;
 
+            if (styleControl == 1)
+            {
+                // if on card view, changes back to list view// 
+                RenderCards();
+            }
 
             
 
@@ -309,6 +314,8 @@ namespace Notely_OOD_Project
 
                 }
             }
+
+         
             // calls create card passing filtered list, cards are then rendered from that list// 
             // add note works similar , calling if stylecontrol = 0, rendering out the new note that was added to the list// 
             // adding event listeners for clicks on the notes?? 
@@ -415,11 +422,14 @@ namespace Notely_OOD_Project
 
                 mainGrid.Children.Remove(listBxNoteBoard);
 
+
+                HideElements();
+
                 
                 WrapPanel noteBoard = new WrapPanel
                 {
                     Name = "noteBoard",
-                    Background = new SolidColorBrush(Color.FromRgb(235, 235, 235)),
+                    Background = new SolidColorBrush(Color.FromRgb(245, 245, 245)),
                     Orientation = Orientation.Horizontal,
 
                 };
@@ -435,15 +445,17 @@ namespace Notely_OOD_Project
                 Grid.SetColumnSpan(myScrollViewer, 7);
                 Grid.SetRowSpan(myScrollViewer, 4);
 
-
+                Random ran = new Random();
            
                 foreach (Note note in notes)
                 {
 
                     Border noteBorder = new Border
                     {
-                        BorderBrush = new SolidColorBrush(Color.FromRgb(1, 40, 5)),
-                        BorderThickness = new Thickness(2),
+                        BorderBrush = new SolidColorBrush(Color.FromRgb(26, 26, 64)),
+                        BorderThickness = new Thickness(1),
+                        
+                       
                     };
 
                     TextBlock title = new TextBlock
@@ -472,8 +484,38 @@ namespace Notely_OOD_Project
                     {
                         Margin = new Thickness(10)
 
-                    };
-                    StackPanel allign = new StackPanel
+                        //Background = new SolidColorBrush(Color.FromRgb(245, 245, 0))
+                        // Background = new SolidColorBrush(Color.FromRgb((byte)ran.Next(220, 255), (byte)ran.Next(100, 255), (byte)ran.Next(1, 10)))
+
+                         
+
+
+
+                };
+
+
+                    switch (ran.Next(0, 4))
+                {
+                    case 0:
+                        noteGrid.Background = new SolidColorBrush(Color.FromRgb(241, 197, 197));
+                       break;
+                    case 1:
+                            noteGrid.Background = new SolidColorBrush(Color.FromRgb(250, 240, 175));
+                        break;
+                    case 2:
+                            noteGrid.Background = new SolidColorBrush(Color.FromRgb(229, 237, 183));
+                       break;
+                    case 3:
+                            noteGrid.Background = new SolidColorBrush(Color.FromRgb(139, 205, 205));
+                       break;
+
+                        default:
+                        break;
+                }
+
+                // btnAddNote.AddHandler(Button.ClickEvent, new RoutedEventHandler(btnAddNote_Click));
+
+                StackPanel allign = new StackPanel
                     {
                         // stack panel used to allign elements// 
                     };
@@ -494,6 +536,7 @@ namespace Notely_OOD_Project
 
             else if (styleControl == 1)
             {
+                RevealElements();
 
                // cycles through main window children, deletes scrollviewer(card note board)
 
@@ -519,6 +562,22 @@ namespace Notely_OOD_Project
                 styleControl = 0;
 
             }
+        }
+
+        private void HideElements()
+        {
+            StackPanelDetails.Visibility = Visibility.Collapsed;
+            txtBxDisplay.Visibility = Visibility.Hidden;
+            comboDisplay.Visibility = Visibility.Hidden;
+            btnSort.Visibility = Visibility.Hidden;
+        }
+
+        private void RevealElements()
+        {
+            StackPanelDetails.Visibility = Visibility.Visible;
+            txtBxDisplay.Visibility = Visibility.Visible;
+            comboDisplay.Visibility = Visibility.Visible;
+            btnSort.Visibility = Visibility.Visible;
         }
     }
 }
