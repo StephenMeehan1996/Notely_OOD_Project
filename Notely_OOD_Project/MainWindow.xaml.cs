@@ -309,6 +309,10 @@ namespace Notely_OOD_Project
 
                 }
             }
+            // calls create card passing filtered list, cards are then rendered from that list// 
+            // add note works similar , calling if stylecontrol = 0, rendering out the new note that was added to the list// 
+            // adding event listeners for clicks on the notes?? 
+         
         }
 
         private void btnSort_Click(object sender, RoutedEventArgs e)
@@ -388,6 +392,136 @@ namespace Notely_OOD_Project
                 notes.Remove(selected);
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = notes;
+            }
+        }
+
+        private void btnChangeView_Click(object sender, RoutedEventArgs e)
+        {
+
+            RenderCards();
+            
+            
+        }
+
+        private void RenderCards()
+        {
+            // 0 is listbox
+            // 1 is cards
+
+         
+            if (styleControl == 0)
+            {
+                mainGrid.Children.Remove(listBxNoteBoard);
+
+                StackPanel noteBoard = new StackPanel
+                {
+                    Name = "noteBoard",
+                    Background = new SolidColorBrush(Color.FromRgb(235, 235, 235)),
+                    Orientation = Orientation.Horizontal
+
+                };
+
+
+                mainGrid.Children.Add(noteBoard);
+                Grid.SetColumn(noteBoard, 0);
+                Grid.SetRow(noteBoard, 1);
+                Grid.SetColumnSpan(noteBoard, 7);
+                Grid.SetRowSpan(noteBoard, 4);
+
+
+           
+                foreach (Note note in notes)
+                {
+
+                    Border noteBorder = new Border
+                    {
+                        BorderBrush = new SolidColorBrush(Color.FromRgb(1, 40, 5)),
+                        BorderThickness = new Thickness(2),
+
+
+
+                    };
+
+                    TextBlock title = new TextBlock
+                    {
+                        Text = note.Title.ToString(),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Padding = new Thickness(10)
+                    };
+
+                    TextBlock date = new TextBlock
+                    {
+                        Text = note.CompleationDate.ToShortDateString(),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Padding = new Thickness(10)
+                    };
+
+                    TextBlock content = new TextBlock
+                    {
+                        // change 
+                        Text = note.Content.ToString(),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Padding = new Thickness(10)
+                    };
+
+                    Grid noteGrid = new Grid
+                    {
+                        Margin = new Thickness(10)
+
+
+
+                    };
+                    StackPanel allign = new StackPanel
+                    {
+                        // stack panel used to allign elements// 
+
+
+                    };
+
+                    noteGrid.Children.Add(noteBorder);
+                    noteGrid.Children.Add(allign);
+                    allign.Children.Add(title);
+                    allign.Children.Add(date);
+                    allign.Children.Add(content);
+
+                  
+             
+                
+
+                    noteBoard.Children.Add(noteGrid);
+                    styleControl = 1;
+
+                }
+
+            }
+
+            else if (styleControl == 1)
+            {
+
+                // mainGrid.Children.Remove(noteBoard);
+
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(mainGrid); i++)
+                {
+                    Visual childVisual = (Visual)VisualTreeHelper.GetChild(mainGrid, i);
+                    if (childVisual is StackPanel)
+                    {
+                        mainGrid.Children.Remove((UIElement)childVisual);
+                    }
+                }
+
+
+                    ListBox list = new ListBox
+                {
+                    Name = "listBxNoteBoard"
+
+                };
+
+                listBxNoteBoard.ItemsSource = notes;
+
+                mainGrid.Children.Add(listBxNoteBoard);
+                
+                styleControl = 0;
+
             }
         }
     }
