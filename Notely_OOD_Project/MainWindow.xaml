@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="850" MinWidth="750" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="850" MinWidth="810" Loaded="Window_Loaded">
     <DockPanel>
 
         <Grid DockPanel.Dock="Top">
@@ -59,7 +59,7 @@
         <Grid DockPanel.Dock="Bottom" >
             
         </Grid>
-    <Grid >
+    <Grid x:Name="mainGrid" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -81,8 +81,8 @@
 
             <TextBlock HorizontalAlignment="Right" Grid.Row="0" Grid.Column="0"  TextWrapping="Wrap" Text="Display:" VerticalAlignment="Bottom" Margin="0 0 0 0"   FontFamily="UD Digi Kyokasho NP-B"/>
             <ComboBox x:Name="comboDisplay" Grid.Row="0" Grid.Column="1"   VerticalAlignment="Bottom" HorizontalAlignment="Center" MinWidth="55" Margin="0 0 0 0"  SelectionChanged="comboDisplay_SelectionChanged"/>
-            <Button x:Name="btnChangeView" Padding="2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Content="Change View" HorizontalAlignment="Center"  Margin="0 0 0 0" />
-            <Button x:Name="btnSort" Content="Sort" Padding="2" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75"  Click="btnSort_Click"/>
+            <Button x:Name="btnChangeView" Padding="2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Content="Change View" HorizontalAlignment="Center"   />
+            <Button x:Name="btnSort" Content="Sort" Padding="2" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="65"  Click="btnSort_Click"/>
             <ListBox x:Name="listBxNoteBoard" Grid.Row="1" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="7" HorizontalAlignment="Left" MinHeight="326" VerticalAlignment="Top" Margin="-50 0 0 0"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>
     
 

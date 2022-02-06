@@ -29,9 +29,16 @@ namespace Notely_OOD_Project
     public partial class MainWindow : Window
     {
        public List<Note> notes = new List<Note>();
+        int styleControl = 0;
         public MainWindow()
         {
             InitializeComponent();
+            //Button but = new Button();
+            //but.Content = "test";
+            
+           
+            //mainGrid.Children.Add(but);
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
