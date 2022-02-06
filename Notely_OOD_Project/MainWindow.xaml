@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="850" MinWidth="810" Loaded="Window_Loaded">
+    
     <DockPanel>
 
         <Grid DockPanel.Dock="Top">

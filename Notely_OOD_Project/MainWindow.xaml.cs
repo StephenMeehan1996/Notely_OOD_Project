@@ -87,7 +87,7 @@ namespace Notely_OOD_Project
 
             Random ran = new Random();
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 8; i++)
             {
                
                 int index = ran.Next(0, titles.Count);
@@ -411,22 +411,29 @@ namespace Notely_OOD_Project
          
             if (styleControl == 0)
             {
+              
+
                 mainGrid.Children.Remove(listBxNoteBoard);
 
-                StackPanel noteBoard = new StackPanel
+                
+                WrapPanel noteBoard = new WrapPanel
                 {
                     Name = "noteBoard",
                     Background = new SolidColorBrush(Color.FromRgb(235, 235, 235)),
-                    Orientation = Orientation.Horizontal
+                    Orientation = Orientation.Horizontal,
 
                 };
 
+                 // assigns note board as child of scrollViewer
+                ScrollViewer myScrollViewer = new ScrollViewer();
+                myScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+                myScrollViewer.Content = noteBoard;
 
-                mainGrid.Children.Add(noteBoard);
-                Grid.SetColumn(noteBoard, 0);
-                Grid.SetRow(noteBoard, 1);
-                Grid.SetColumnSpan(noteBoard, 7);
-                Grid.SetRowSpan(noteBoard, 4);
+                mainGrid.Children.Add(myScrollViewer);
+                Grid.SetColumn(myScrollViewer, 0);
+                Grid.SetRow(myScrollViewer, 1);
+                Grid.SetColumnSpan(myScrollViewer, 7);
+                Grid.SetRowSpan(myScrollViewer, 4);
 
 
            
@@ -437,9 +444,6 @@ namespace Notely_OOD_Project
                     {
                         BorderBrush = new SolidColorBrush(Color.FromRgb(1, 40, 5)),
                         BorderThickness = new Thickness(2),
-
-
-
                     };
 
                     TextBlock title = new TextBlock
@@ -458,7 +462,7 @@ namespace Notely_OOD_Project
 
                     TextBlock content = new TextBlock
                     {
-                        // change 
+                        
                         Text = note.Content.ToString(),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         Padding = new Thickness(10)
@@ -468,25 +472,18 @@ namespace Notely_OOD_Project
                     {
                         Margin = new Thickness(10)
 
-
-
                     };
                     StackPanel allign = new StackPanel
                     {
                         // stack panel used to allign elements// 
-
-
                     };
+
 
                     noteGrid.Children.Add(noteBorder);
                     noteGrid.Children.Add(allign);
                     allign.Children.Add(title);
                     allign.Children.Add(date);
                     allign.Children.Add(content);
-
-                  
-             
-                
 
                     noteBoard.Children.Add(noteGrid);
                     styleControl = 1;
@@ -498,19 +495,18 @@ namespace Notely_OOD_Project
             else if (styleControl == 1)
             {
 
-                // mainGrid.Children.Remove(noteBoard);
+               // cycles through main window children, deletes scrollviewer(card note board)
 
                 for (int i = 0; i < VisualTreeHelper.GetChildrenCount(mainGrid); i++)
                 {
                     Visual childVisual = (Visual)VisualTreeHelper.GetChild(mainGrid, i);
-                    if (childVisual is StackPanel)
+                    if (childVisual is ScrollViewer)
                     {
                         mainGrid.Children.Remove((UIElement)childVisual);
                     }
                 }
 
-
-                    ListBox list = new ListBox
+                ListBox list = new ListBox
                 {
                     Name = "listBxNoteBoard"
 
