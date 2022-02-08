@@ -132,9 +132,6 @@ namespace Notely_OOD_Project
         }
         #endregion
 
-
-
-
         private void listBxNoteBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Note selectedNote = listBxNoteBoard.SelectedItem as Note;
@@ -144,14 +141,11 @@ namespace Notely_OOD_Project
                 DisplayDetails(selectedNote);
 
             }
-
             else
             {
-
                 DisableEdit();
                 clearDetails();
             }
-            
         }
 
         private void DisplayDetails(Note selectedNote)
@@ -167,29 +161,12 @@ namespace Notely_OOD_Project
             
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            Note selectedNote = listBxNoteBoard.SelectedItem as Note;
-
-            if (selectedNote != null)
-            {
-                selectedNote.Title = txtBTitle.Text;
-                
-                selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
-                selectedNote.Prior = GetPriority();
-                selectedNote.Content = txtBContent.Text;
-
-                comboDisplay.SelectedItem = "All";
-                listBxNoteBoard.ItemsSource = null;
-                listBxNoteBoard.ItemsSource = notes;
-
-            }
-        
-
-        }
+       
 
         private Note.Priority GetPriority()
         {
+
+            // method to return Enum Priority to edit notes //
             Note.Priority selected = Note.Priority.Critical;
 
             switch (comboPriority.SelectedItem)
@@ -213,29 +190,7 @@ namespace Notely_OOD_Project
             return selected;
         }
 
-        private void btnAddNote_Click(object sender, RoutedEventArgs e)
-        {
-            AddNote add = new AddNote();
-            add.Owner = this;
-            add.ShowDialog();
-
-
-            listBxNoteBoard.ItemsSource = null;
-            listBxNoteBoard.ItemsSource = notes;
-
-            if (styleControl == 1)
-            {
-                // if on card view, changes back to list view// 
-                RenderCards();
-            }
-
-            
-
-            //AddNote.
-
-
-
-        }
+        
 
         private void comboDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -252,7 +207,15 @@ namespace Notely_OOD_Project
 
             if (selected == "All")
             {
-                listBxNoteBoard.ItemsSource = notes;
+                // notes added to filtered list here , because filtered list.Count 
+                // is used to contol the item source if there are no notes of that 
+                // Priority created 
+
+                foreach (Note note in notes)
+                {
+                    filteredList.Add(note);
+                }
+                listBxNoteBoard.ItemsSource = filteredList;
                 btnSort.Visibility = Visibility.Visible;
 
             }
@@ -315,11 +278,58 @@ namespace Notely_OOD_Project
                 }
             }
 
+            
+
+             if (filteredList.Count == 0)
+            {
+                //MessageBox.Show(filteredList.Count.ToString());
+                listBxNoteBoard.ItemsSource = null;
+                
+            }
+
          
             // calls create card passing filtered list, cards are then rendered from that list// 
             // add note works similar , calling if stylecontrol = 0, rendering out the new note that was added to the list// 
             // adding event listeners for clicks on the notes?? 
          
+        }
+        #region Methods to interact with notes
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Note selectedNote = listBxNoteBoard.SelectedItem as Note;
+
+            if (selectedNote != null)
+            {
+                selectedNote.Title = txtBTitle.Text;
+
+                selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
+                selectedNote.Prior = GetPriority();
+                selectedNote.Content = txtBContent.Text;
+
+                comboDisplay.SelectedItem = "All";
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = notes;
+
+            }
+
+
+        }
+        private void btnAddNote_Click(object sender, RoutedEventArgs e)
+        {
+            AddNote add = new AddNote();
+            add.Owner = this;
+            add.ShowDialog();
+
+
+            listBxNoteBoard.ItemsSource = null;
+            listBxNoteBoard.ItemsSource = notes;
+
+            if (styleControl == 1)
+            {
+                // if on card view, changes back to list view// 
+                RenderCards();
+            }
+
         }
 
         private void btnSort_Click(object sender, RoutedEventArgs e)
@@ -328,6 +338,18 @@ namespace Notely_OOD_Project
             notes.Reverse();
             listBxNoteBoard.ItemsSource = null;
             listBxNoteBoard.ItemsSource = notes;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Note selected = listBxNoteBoard.SelectedItem as Note;
+
+            if (selected != null)
+            {
+                notes.Remove(selected);
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = notes;
+            }
         }
 
         private void btnPrintReport_Click(object sender, RoutedEventArgs e)
@@ -356,59 +378,16 @@ namespace Notely_OOD_Project
 
         }
 
-
-        // backround methods // 
-        private void DisableEdit()
-        {
-            txtBTitle.IsEnabled = false;
-            comboPriority.IsEnabled = false;
-            datePicker.IsEnabled = false;
-            txtBTime.IsEnabled = false;
-            txtBContent.IsEnabled = false;
-
-        }
-        private void EnableEdit()
-        {
-            txtBTitle.IsEnabled = true;
-            comboPriority.IsEnabled = true;
-            datePicker.IsEnabled = true;
-            txtBTime.IsEnabled = true;
-            txtBContent.IsEnabled = true;
-
-
-        }
-
-        private void clearDetails()
-        {
-            txtBTitle.Text = null;
-            comboPriority.SelectedItem = null;
-            datePicker.SelectedDate = null;
-            txtBTime.Text = null;
-            txtBContent.Text = null;
-
-        }
-
-    
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            Note selected = listBxNoteBoard.SelectedItem as Note;
-
-            if (selected != null)
-            {
-                notes.Remove(selected);
-                listBxNoteBoard.ItemsSource = null;
-                listBxNoteBoard.ItemsSource = notes;
-            }
-        }
-
         private void btnChangeView_Click(object sender, RoutedEventArgs e)
         {
 
             RenderCards();
-            
-            
+
+
         }
+        #endregion
+
+
 
         private void RenderCards()
         {
@@ -418,9 +397,7 @@ namespace Notely_OOD_Project
          
             if (styleControl == 0)
             {
-              
-
-                mainGrid.Children.Remove(listBxNoteBoard);
+               // mainGrid.Children.Remove(listBxNoteBoard);
 
 
                 HideElements();
@@ -437,13 +414,15 @@ namespace Notely_OOD_Project
                  // assigns note board as child of scrollViewer
                 ScrollViewer myScrollViewer = new ScrollViewer();
                 myScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+               
+
                 myScrollViewer.Content = noteBoard;
 
                 mainGrid.Children.Add(myScrollViewer);
                 Grid.SetColumn(myScrollViewer, 0);
-                Grid.SetRow(myScrollViewer, 1);
-                Grid.SetColumnSpan(myScrollViewer, 7);
-                Grid.SetRowSpan(myScrollViewer, 4);
+                Grid.SetRow(myScrollViewer, 2);
+                Grid.SetColumnSpan(myScrollViewer, 3);
+                //Grid.SetRowSpan(myScrollViewer, 4);
 
                 Random ran = new Random();
            
@@ -482,16 +461,11 @@ namespace Notely_OOD_Project
 
                     Grid noteGrid = new Grid
                     {
-                        Margin = new Thickness(10)
-
+                        Margin = new Thickness(10),
+                     
                         //Background = new SolidColorBrush(Color.FromRgb(245, 245, 0))
                         // Background = new SolidColorBrush(Color.FromRgb((byte)ran.Next(220, 255), (byte)ran.Next(100, 255), (byte)ran.Next(1, 10)))
-
-                         
-
-
-
-                };
+                    };
 
 
                     switch (ran.Next(0, 4))
@@ -549,19 +523,51 @@ namespace Notely_OOD_Project
                     }
                 }
 
-                ListBox list = new ListBox
-                {
-                    Name = "listBxNoteBoard"
+                //ListBox list = new ListBox
+                //{
+                //    Name = "listBxNoteBoard"
 
-                };
+                //};
 
-                listBxNoteBoard.ItemsSource = notes;
+                //listBxNoteBoard.ItemsSource = notes;
 
-                mainGrid.Children.Add(listBxNoteBoard);
+                //mainGrid.Children.Add(listBxNoteBoard);
                 
                 styleControl = 0;
 
             }
+        }
+
+        #region BackGround Methods
+        // backround methods // 
+        private void DisableEdit()
+        {
+            txtBTitle.IsEnabled = false;
+            comboPriority.IsEnabled = false;
+            datePicker.IsEnabled = false;
+            txtBTime.IsEnabled = false;
+            txtBContent.IsEnabled = false;
+
+        }
+        private void EnableEdit()
+        {
+            txtBTitle.IsEnabled = true;
+            comboPriority.IsEnabled = true;
+            datePicker.IsEnabled = true;
+            txtBTime.IsEnabled = true;
+            txtBContent.IsEnabled = true;
+
+
+        }
+
+        private void clearDetails()
+        {
+            txtBTitle.Text = null;
+            comboPriority.SelectedItem = null;
+            datePicker.SelectedDate = null;
+            txtBTime.Text = null;
+            txtBContent.Text = null;
+
         }
 
         private void HideElements()
@@ -579,5 +585,21 @@ namespace Notely_OOD_Project
             comboDisplay.Visibility = Visibility.Visible;
             btnSort.Visibility = Visibility.Visible;
         }
+        #endregion
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var ah = ActualHeight;
+            var aw = ActualWidth;
+            var h = Height;
+            var w = Width;
+
+            if (aw > 1000)
+            {
+                StackPanelDetails.HorizontalAlignment = HorizontalAlignment.Center;
+
+            }
+        }
+    
     }
 }

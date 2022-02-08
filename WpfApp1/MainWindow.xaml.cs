@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Notely_OOD_Project
+namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for test.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class test : Window
+    public partial class MainWindow : Window
     {
-        public test()
+        public MainWindow()
         {
             InitializeComponent();
-           
         }
     }
 }
