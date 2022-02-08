@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="850" MinWidth="810" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
 
-    <Grid x:Name="mainGrid" Margin="0,0,0.2,0.4">
+    <Grid x:Name="mainGrid" Margin="0,0,0.2,0.4" Background="#F9F9F9">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="139*"/>
-            <ColumnDefinition Width="423*"/>
+            <ColumnDefinition Width="351*"/>
+            <ColumnDefinition Width="72*"/>
             <ColumnDefinition Width="281*"/>
 
 
@@ -27,12 +28,12 @@
 
 
 
-        <TextBlock HorizontalAlignment="Right"  TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" Margin ="0,0,49.4,0" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20" Grid.Column="1"/>
-        <Button x:Name="btnAddNote" Content="Add Note"  HorizontalAlignment="Right" Margin="0,40,170.4,0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click" Grid.Column="1"/>
-        <Button x:Name="btnPrintReport" Content="Print Report"  HorizontalAlignment="Right" Margin="0,40,50.4,0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Right"   TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" Margin ="0,0,0,0" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20" Grid.Column="1"  Height="23" Width="198"/>
+        <Button x:Name="btnAddNote" Content="Add Note"  HorizontalAlignment="Right" Margin="0,40,100.4,0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click" Grid.Column="1" Height="19"/>
+        <Button x:Name="btnPrintReport" Content="Print Report"  HorizontalAlignment="Right" Margin="0,40,80.4,0" VerticalAlignment="Top" Width="75"  Click="btnPrintReport_Click" Grid.Column="1" Grid.ColumnSpan="2" Height="19"/>
 
 
-        <Border BorderBrush="Black" BorderThickness="0.5"  Grid.Column="2" Grid.Row="2" Margin="19.6,0.4,20.2,5.4" Padding="20 10 20 5">
+        <Border x:Name="borderDetails" BorderBrush="Black"  BorderThickness="0.5"  Grid.Column="3" Grid.Row="2" Margin="19.6,1.4,20.2,5.4" Padding="20 10 20 5">
 
 
             <StackPanel x:Name="StackPanelDetails">
@@ -49,7 +50,7 @@
                 <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
 
 
-                <Button x:Name="btnEdit" Content="Save Changes" Padding="10 10 0 10" MaxWidth="160"  Click="btnEdit_Click"/>
+                <Button x:Name="btnEdit" Content="Save Changes"   Padding="10 10 0 10" MaxWidth="160"  Click="btnEdit_Click"/>
                 <Button x:Name="btnDelete" Content="Delete " Padding="10 10 0 10" MaxWidth="160"   Click="btnDelete_Click"/>
 
             </StackPanel>
@@ -57,17 +58,17 @@
         </Border>
 
 
-        <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin=" 40 0 0 0"  >
+        <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="40,0,0,0" Grid.RowSpan="2"  >
             <TextBlock x:Name="txtBxDisplay" HorizontalAlignment="Right" VerticalAlignment="Bottom"  TextWrapping="Wrap" Text="Display:"  Margin="5 0 10 0"   FontFamily="UD Digi Kyokasho NP-B"/>
             <ComboBox x:Name="comboDisplay"    HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="55" MaxHeight="35" Margin="5 0 10 0"  SelectionChanged="comboDisplay_SelectionChanged"/>
-            <Button x:Name="btnChangeView" Padding="2"   Content="Change View" VerticalAlignment="Bottom" Margin="5 0 10 0" MaxHeight="35" HorizontalAlignment="Center" Click="btnChangeView_Click"    />
+            <Button x:Name="btnChangeView" Padding="2"   Content="Card View" VerticalAlignment="Bottom" Margin="5 0 10 0" MaxHeight="35" HorizontalAlignment="Center" Click="btnChangeView_Click"    />
             <Button x:Name="btnSort" Content="Sort" Padding="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom"   Width="65" MaxHeight="35" Margin="5 0 10 0"  Click="btnSort_Click"/>
 
         </StackPanel>
 
 
 
-        <Border BorderBrush="Black" BorderThickness="0.5" Grid.Row="2" Margin="30,0.4,15.4,0.4" Grid.Column="0" Grid.ColumnSpan="2">
+        <Border BorderBrush="Black" BorderThickness="0.5"   Grid.Row="2" Margin="30,1.4,15.4,0.4" Grid.Column="0" Grid.ColumnSpan="3">
             <ListBox x:Name="listBxNoteBoard"   MinHeight="326" MinWidth="460" VerticalAlignment="Top" Margin="20 20 20 20"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>
 
         </Border>

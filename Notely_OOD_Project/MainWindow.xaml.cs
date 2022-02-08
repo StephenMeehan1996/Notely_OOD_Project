@@ -397,9 +397,9 @@ namespace Notely_OOD_Project
          
             if (styleControl == 0)
             {
-               // mainGrid.Children.Remove(listBxNoteBoard);
+                // mainGrid.Children.Remove(listBxNoteBoard);
 
-
+                btnChangeView.Content = "List View";
                 HideElements();
 
                 
@@ -421,7 +421,7 @@ namespace Notely_OOD_Project
                 mainGrid.Children.Add(myScrollViewer);
                 Grid.SetColumn(myScrollViewer, 0);
                 Grid.SetRow(myScrollViewer, 2);
-                Grid.SetColumnSpan(myScrollViewer, 3);
+                Grid.SetColumnSpan(myScrollViewer, 4);
                 //Grid.SetRowSpan(myScrollViewer, 4);
 
                 Random ran = new Random();
@@ -510,6 +510,7 @@ namespace Notely_OOD_Project
 
             else if (styleControl == 1)
             {
+                btnChangeView.Content = "Card View";
                 RevealElements();
 
                // cycles through main window children, deletes scrollviewer(card note board)
@@ -572,15 +573,18 @@ namespace Notely_OOD_Project
 
         private void HideElements()
         {
-            StackPanelDetails.Visibility = Visibility.Collapsed;
+            borderDetails.Visibility = Visibility.Collapsed;
+            //mainGrid.Children.Remove(borderDetails);
             txtBxDisplay.Visibility = Visibility.Hidden;
             comboDisplay.Visibility = Visibility.Hidden;
             btnSort.Visibility = Visibility.Hidden;
+           // borderDetails.Visibility = Visibility.Collapsed;
         }
 
         private void RevealElements()
         {
-            StackPanelDetails.Visibility = Visibility.Visible;
+
+            borderDetails.Visibility = Visibility.Visible;
             txtBxDisplay.Visibility = Visibility.Visible;
             comboDisplay.Visibility = Visibility.Visible;
             btnSort.Visibility = Visibility.Visible;

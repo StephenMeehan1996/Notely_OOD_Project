@@ -1,10 +1,13 @@
 --------------------
-   Note Report - 06/02/2022
+   Note Report - 08/02/2022
 --------------------
       ------
-Title: Prawn - 17/02/2022 | Content: sdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-Title: Complete Web Dev Project - 14/02/2022 | Content: Upload build of project to Git - Finish report
-Title: Prepare Dinner - 15/02/2022 | Content: Prepare Dinner for the next 3 days
-Title: Write In Journal - 15/02/2022 | Content: Write weekly update in Journal
-Title: Go for a walk - 22/02/2022 | Content: Take 1 hour out, to go for walk
+Title: Go for a walk - 25/02/2022 | Content: Take 1 hour out, to go for walk
+Title: Write In Journal - 23/02/2022 | Content: Write weekly update in Journal
+Title: Tidy the House - 18/02/2022 | Content: Spend 30 minutes cleaning the house
+Title: Study for Maths Test - 17/02/2022 | Content: Continue studying Q1-3 for exam
+Title: Prepare Dinner - 16/02/2022 | Content: Prepare Dinner for the next 3 days
+Title: Do the Weekly Shop - 10/02/2022 | Content: complete shopping for the week
+Title: Make Bed - 21/02/2022 | Content: Get Up five minutes early to make bed
+Title: Complete Web Dev Project - 12/02/2022 | Content: Upload build of project to Git - Finish report
 --------------------
