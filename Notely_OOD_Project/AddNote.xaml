@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
-        Title="AddNote" Height="450" Width="390" Loaded="Window_Loaded">
+        Title="AddNote" Height="450" Width="390" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterOwner">
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

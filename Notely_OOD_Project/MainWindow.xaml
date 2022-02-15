@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="850" MinWidth="810" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="MainWindow" Height="600" Width="850" MinWidth="810" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged"
+        WindowStartupLocation="CenterScreen">
 
     <Grid x:Name="mainGrid" Margin="0,0,0.2,0.4" Background="#F9F9F9">
 
@@ -62,14 +63,18 @@
             <TextBlock x:Name="txtBxDisplay" HorizontalAlignment="Right" VerticalAlignment="Bottom"  TextWrapping="Wrap" Text="Display:"  Margin="5 0 10 0"   FontFamily="UD Digi Kyokasho NP-B"/>
             <ComboBox x:Name="comboDisplay"    HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="55" MaxHeight="35" Margin="5 0 10 0"  SelectionChanged="comboDisplay_SelectionChanged"/>
             <Button x:Name="btnChangeView" Padding="2"   Content="Card View" VerticalAlignment="Bottom" Margin="5 0 10 0" MaxHeight="35" HorizontalAlignment="Center" Click="btnChangeView_Click"    />
-            <Button x:Name="btnSort" Content="Sort" Padding="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom"   Width="65" MaxHeight="35" Margin="5 0 10 0"  Click="btnSort_Click"/>
+            <Button x:Name="btnSort" Content="Change Sort" Padding="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom"   Width="100" MaxHeight="35" Margin="5 0 20 0"  Click="btnSort_Click"/>
+            
+                <TextBlock x:Name="txtBkSort" Text="Sorted By: Not Sorted" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="14"></TextBlock>
+            
+            
 
         </StackPanel>
 
 
 
         <Border BorderBrush="Black" BorderThickness="0.5"   Grid.Row="2" Margin="30,1.4,15.4,0.4" Grid.Column="0" Grid.ColumnSpan="3">
-            <ListBox x:Name="listBxNoteBoard"   MinHeight="326" MinWidth="460" VerticalAlignment="Top" Margin="20 20 20 20"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>
+            <ListBox x:Name="listBxNoteBoard"   MinHeight="326" MinWidth="460" VerticalAlignment="Top" Margin="20 50 20 50"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>
 
         </Border>
 

@@ -28,8 +28,9 @@ namespace Notely_OOD_Project
     
     public partial class MainWindow : Window
     {
-       public List<Note> notes = new List<Note>();
+       internal List<Note> notes = new List<Note>();
         int styleControl = 0;
+        int sortControl = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -132,6 +133,7 @@ namespace Notely_OOD_Project
         }
         #endregion
 
+        #region Methods to interact with UI
         private void listBxNoteBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Note selectedNote = listBxNoteBoard.SelectedItem as Note;
@@ -293,6 +295,8 @@ namespace Notely_OOD_Project
             // adding event listeners for clicks on the notes?? 
          
         }
+        #endregion
+
         #region Methods to interact with notes
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -334,10 +338,61 @@ namespace Notely_OOD_Project
 
         private void btnSort_Click(object sender, RoutedEventArgs e)
         {
-            notes.Sort();
-            notes.Reverse();
-            listBxNoteBoard.ItemsSource = null;
-            listBxNoteBoard.ItemsSource = notes;
+            //notes.Sort();
+            //notes.Reverse();
+            //listBxNoteBoard.ItemsSource = null;
+            //listBxNoteBoard.ItemsSource = notes;
+
+           //// refactor method //////
+
+            if (sortControl == 0)
+            {
+                var query = notes
+                    .Select(n => n)
+                    .OrderBy(n => n.Title);
+
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = query;
+
+                txtBkSort.Text = "Sorted by: Aplbetical";
+             
+                sortControl = 1;
+
+            }
+            else if (sortControl == 1)
+            {
+                var query = notes
+                  .Select(n => n)
+                  .OrderBy(n => n.CompleationDate);
+
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = query;
+
+                txtBkSort.Text = "Sorted by: Date";
+                
+                sortControl = 2;
+            }
+
+            else if (sortControl == 2)
+            {
+                var query = notes
+                  .Select(n => n)
+                  .OrderByDescending(n => n.Prior) ;
+
+
+                listBxNoteBoard.ItemsSource = null;
+                listBxNoteBoard.ItemsSource = query;
+
+                txtBkSort.Text = "Sorted by: Priority";
+            
+                sortControl = 0;
+
+            }
+
+
+
+
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -387,8 +442,7 @@ namespace Notely_OOD_Project
         }
         #endregion
 
-
-
+        #region Method to render Cards
         private void RenderCards()
         {
             // 0 is listbox
@@ -538,6 +592,7 @@ namespace Notely_OOD_Project
 
             }
         }
+        #endregion
 
         #region BackGround Methods
         // backround methods // 
@@ -589,7 +644,7 @@ namespace Notely_OOD_Project
             comboDisplay.Visibility = Visibility.Visible;
             btnSort.Visibility = Visibility.Visible;
         }
-        #endregion
+        
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -604,6 +659,8 @@ namespace Notely_OOD_Project
 
             }
         }
-    
+
+        #endregion
+
     }
 }
