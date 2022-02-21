@@ -48,7 +48,7 @@ namespace Notely_OOD_Project
             //Note note2 = new Note("Go for Run", Note.Priority.Relaxed, new DateTime(2022, 02, 02), "Go For Run in the woods");
             //Note note3 = new Note("Complete Web Dev Project", Note.Priority.Critical, new DateTime(2022, 02, 17), "Complete and upload build to Git");
             //Note note4 = new Note("Complete OOD LabSheet", Note.Priority.Urgent, new DateTime(2022, 02, 05), "Complete and upload this weeks labsheet");
-
+            
 
             CreateRandomNotes();
             // returns list of random notes // 
@@ -328,7 +328,7 @@ namespace Notely_OOD_Project
             listBxNoteBoard.ItemsSource = null;
             listBxNoteBoard.ItemsSource = notes;
 
-            if (styleControl == 1)
+            if (styleControl == 0)
             {
                 // if on card view, changes back to list view// 
                 RenderCards();
@@ -342,9 +342,9 @@ namespace Notely_OOD_Project
             //notes.Reverse();
             //listBxNoteBoard.ItemsSource = null;
             //listBxNoteBoard.ItemsSource = notes;
-
-           //// refactor method //////
-
+           // List<Note> test = new List<Note>();
+            //// refactor method //////
+            //dynamic query = null;
             if (sortControl == 0)
             {
                 var query = notes
@@ -353,7 +353,7 @@ namespace Notely_OOD_Project
 
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = query;
-
+                notes = query.ToList();
                 txtBkSort.Text = "Sorted by: Aplbetical";
              
                 sortControl = 1;
@@ -367,7 +367,7 @@ namespace Notely_OOD_Project
 
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = query;
-
+                notes = query.ToList();
                 txtBkSort.Text = "Sorted by: Date";
                 
                 sortControl = 2;
@@ -382,12 +382,18 @@ namespace Notely_OOD_Project
 
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = query;
-
+                notes = query.ToList();
                 txtBkSort.Text = "Sorted by: Priority";
             
                 sortControl = 0;
 
             }
+
+            //if (styleControl == 1)
+            //{
+               
+            //    RenderCards();
+            //}
 
 
 
@@ -438,8 +444,11 @@ namespace Notely_OOD_Project
 
             RenderCards();
 
+          
 
         }
+
+      
         #endregion
 
         #region Method to render Cards
@@ -462,14 +471,15 @@ namespace Notely_OOD_Project
                     Name = "noteBoard",
                     Background = new SolidColorBrush(Color.FromRgb(245, 245, 245)),
                     Orientation = Orientation.Horizontal,
+                
 
-                };
+
+            };
 
                  // assigns note board as child of scrollViewer
                 ScrollViewer myScrollViewer = new ScrollViewer();
                 myScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                
-
                 myScrollViewer.Content = noteBoard;
 
                 mainGrid.Children.Add(myScrollViewer);
@@ -495,14 +505,16 @@ namespace Notely_OOD_Project
                     {
                         Text = note.Title.ToString(),
                         HorizontalAlignment = HorizontalAlignment.Center,
-                        Padding = new Thickness(10)
+                        Padding = new Thickness(10),
+                        Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0))
                     };
 
                     TextBlock date = new TextBlock
                     {
                         Text = note.CompleationDate.ToShortDateString(),
                         HorizontalAlignment = HorizontalAlignment.Center,
-                        Padding = new Thickness(10)
+                        Padding = new Thickness(10),
+                         Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0))
                     };
 
                     TextBlock content = new TextBlock
@@ -510,7 +522,8 @@ namespace Notely_OOD_Project
                         
                         Text = note.Content.ToString(),
                         HorizontalAlignment = HorizontalAlignment.Center,
-                        Padding = new Thickness(10)
+                        Padding = new Thickness(10),
+                         Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0))
                     };
 
                     Grid noteGrid = new Grid
@@ -632,7 +645,7 @@ namespace Notely_OOD_Project
             //mainGrid.Children.Remove(borderDetails);
             txtBxDisplay.Visibility = Visibility.Hidden;
             comboDisplay.Visibility = Visibility.Hidden;
-            btnSort.Visibility = Visibility.Hidden;
+            //btnSort.Visibility = Visibility.Hidden;
            // borderDetails.Visibility = Visibility.Collapsed;
         }
 

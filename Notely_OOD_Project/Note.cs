@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace Notely_OOD_Project
 {
+  
     public class Note : IComparable
     {
+       
+
         public string Title { get; set; }
         public Priority Prior { get; set; }
         public DateTime CompleationDate { get; set; }
         public string Content { get; set; }
+
+        
 
      public enum Priority
     {
@@ -36,10 +41,13 @@ namespace Notely_OOD_Project
 
         }
 
+        
+
         public override string ToString()
         {
-         // use of short date string can be changed//
-         // in the details tab the time can be displayed if its added by the user// 
+            // use of short date string can be changed//
+            // in the details tab the time can be displayed if its added by the user// 
+          
             return string.Format($"Title: {Title} - {CompleationDate.ToShortDateString()} | Content: {Content}");
         }
 

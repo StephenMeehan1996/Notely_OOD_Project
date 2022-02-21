@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
         Title="Options" Height="420" Width="250"
-        WindowStartupLocation ="CenterOwner" Loaded="Window_Loaded">
+        WindowStartupLocation ="CenterOwner" Loaded="Window_Loaded"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
@@ -29,7 +31,7 @@
         <TextBlock Text="Style" Grid.Row ="2" Margin="0 5 0 0"  HorizontalAlignment="Center" TextDecorations="Underline"></TextBlock>
         <TextBlock Text="Mode" Grid.Row ="3" Margin="0 5 0 0"  HorizontalAlignment="Center" TextDecorations="Underline" Grid.RowSpan="2"></TextBlock>
 
-        <Button Content="Save" Grid.Row="4" Margin="4" Width="100" ></Button>
+        <Button x:Name="btnSave" Content="Save" Grid.Row="4" Margin="4" Width="100" Click="btnSave_Click" />
 
         <WrapPanel Grid.Row="1" Margin="25" Orientation="Horizontal">
             <CheckBox x:Name="cbTitle" Content="Title" Grid.Row="1" Margin="5"></CheckBox>

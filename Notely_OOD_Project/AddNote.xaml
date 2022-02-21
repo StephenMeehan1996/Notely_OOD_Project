@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Notely_OOD_Project"
         mc:Ignorable="d"
         Title="AddNote" Height="450" Width="390" Loaded="Window_Loaded"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -21,7 +23,7 @@
             <TextBox x:Name="txtBTimeAdd" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
             <TextBox x:Name="txtBContentAdd" HorizontalAlignment="Left" Height="90"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-            <Button x:Name="btnCreateNote" Content="Add Note" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="75" Click="btnCreateNote_Click"/>
+            <Button x:Name="btnCreateNote" Content="Add Note" HorizontalAlignment="Center"  VerticalAlignment="Top"  Click="btnCreateNote_Click"/>
         </StackPanel>
 
         

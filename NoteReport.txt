@@ -1,12 +1,13 @@
 --------------------
-   Note Report - 20/02/2022
+   Note Report - 21/02/2022
 --------------------
       ------
-Title: Prepare Dinner - 23/02/2022 | Content: Prepare Dinner for the next 3 days
-Title: Study for Maths Test - 03/03/2022 | Content: Continue studying Q1-3 for exam
-Title: Make Bed - 11/03/2022 | Content: Get Up five minutes early to make bed
-Title: Go for a walk - 21/02/2022 | Content: Take 1 hour out, to go for walk
-Title: Tidy the House - 22/02/2022 | Content: Spend 30 minutes cleaning the house
-Title: Write In Journal - 26/02/2022 | Content: Write weekly update in Journal
-Title: Do the Weekly Shop - 08/03/2022 | Content: complete shopping for the week
+Title: Prepare Dinner - 27/02/2022 | Content: Prepare Dinner for the next 3 days
+Title: Study for Maths Test - 09/03/2022 | Content: Continue studying Q1-3 for exam
+Title: Do the Weekly Shop - 03/03/2022 | Content: complete shopping for the week
+Title: Complete Web Dev Project - 26/02/2022 | Content: Upload build of project to Git - Finish report
+Title: Go for a walk - 03/03/2022 | Content: Take 1 hour out, to go for walk
+Title: Write In Journal - 24/02/2022 | Content: Write weekly update in Journal
+Title: Tidy the House - 04/03/2022 | Content: Spend 30 minutes cleaning the house
+Title: Make Bed - 03/03/2022 | Content: Get Up five minutes early to make bed
 --------------------

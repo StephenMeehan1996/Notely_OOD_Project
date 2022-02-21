@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//using MaterialDesignThemes;
+//using MaterialDesignColors;
 
 namespace Notely_OOD_Project
 {
@@ -19,6 +21,7 @@ namespace Notely_OOD_Project
     /// </summary>
     public partial class Options : Window
     {
+        
         public Options()
         {
             InitializeComponent();
@@ -28,8 +31,19 @@ namespace Notely_OOD_Project
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+           
+
+        }
 
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (rbLight.IsChecked == true)
+            {
+
+                
+
+            }
         }
     }
 }
