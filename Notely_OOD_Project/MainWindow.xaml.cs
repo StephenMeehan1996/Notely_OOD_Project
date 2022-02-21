@@ -660,7 +660,17 @@ namespace Notely_OOD_Project
             }
         }
 
+
         #endregion
 
+        private void btnOptions_Click(object sender, RoutedEventArgs e)
+        {
+
+            Options options = new Options();
+            options.Owner = this;
+            options.ShowDialog();
+
+
+        }
     }
 }

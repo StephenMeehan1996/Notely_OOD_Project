@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:Notely_OOD_Project" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-     
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Background" Value="Gray"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+
+        </Style>
+
     </Application.Resources>
 </Application>

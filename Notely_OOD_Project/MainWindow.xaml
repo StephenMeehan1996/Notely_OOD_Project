@@ -24,10 +24,7 @@
             <RowDefinition Height="373*"/>
 
         </Grid.RowDefinitions>
-
-
-
-
+        <Button x:Name="btnOptions" Content="Options" Width="80" Height="20" VerticalAlignment="top" HorizontalAlignment="Left" Margin="10 0 0 0" Click="btnOptions_Click"/>
 
         <TextBlock HorizontalAlignment="Right"   TextAlignment="Center" TextWrapping="Wrap" Text="Welcome to Notely!" Margin ="0,0,0,0" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B" FontSize="20" Grid.Column="1"  Height="23" Width="198"/>
         <Button x:Name="btnAddNote" Content="Add Note"  HorizontalAlignment="Right" Margin="0,40,100.4,0" VerticalAlignment="Top" Width="75"  Click="btnAddNote_Click" Grid.Column="1" Height="19"/>
