@@ -36,8 +36,6 @@ namespace Notely_OOD_Project
             InitializeComponent();
             //Button but = new Button();
             //but.Content = "test";
-            
-           
             //mainGrid.Children.Add(but);
             
         }
@@ -345,6 +343,8 @@ namespace Notely_OOD_Project
            // List<Note> test = new List<Note>();
             //// refactor method //////
             //dynamic query = null;
+
+            // Needs to be refactored here, alot of repeated code// 
             if (sortControl == 0)
             {
                 var query = notes

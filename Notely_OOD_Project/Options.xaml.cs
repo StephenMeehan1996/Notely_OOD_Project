@@ -11,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//using MaterialDesignThemes;
-//using MaterialDesignColors;
+
+using MaterialDesignThemes;
+using MaterialDesignColors;
 
 namespace Notely_OOD_Project
 {
@@ -40,7 +41,10 @@ namespace Notely_OOD_Project
         {
             if (rbLight.IsChecked == true)
             {
+               
+                //MaterialDesignColors.PrimaryColor = new PrimaryColor(Color.FromRgb(0, 0, 0));
 
+               
                 
 
             }
