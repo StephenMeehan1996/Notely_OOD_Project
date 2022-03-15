@@ -72,7 +72,7 @@
 
         </StackPanel>
 
-
+<CheckBox Grid.Row="0" Grid.Column="3" Content="Colour" Click="CheckBox_Click" Name="cbxColour"/>
 
         <Border BorderBrush="Black" BorderThickness="0.5"   Grid.Row="2" Margin="30,1.4,15.4,0.4" Grid.Column="0" Grid.ColumnSpan="3">
             <ListBox x:Name="listBxNoteBoard"   MinHeight="326" MinWidth="460" VerticalAlignment="Top" Margin="20 50 20 50"  SelectionChanged="listBxNoteBoard_SelectionChanged"/>

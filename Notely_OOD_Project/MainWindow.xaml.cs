@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,10 +26,15 @@ namespace Notely_OOD_Project
     // if all is selected sort button appears, else is inviable// 
     // I Comparable sort by priority// 
     // write out to file// 
+
     
+
     public partial class MainWindow : Window
     {
-       internal List<Note> notes = new List<Note>();
+
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();//kmm 15/3/22
+
+        internal List<Note> notes = new List<Note>();
         int styleControl = 0;
         int sortControl = 0;
         public MainWindow()
@@ -683,6 +689,32 @@ namespace Notely_OOD_Project
             options.Owner = this;
             options.ShowDialog();
 
+
+        }
+
+        private void ToggleBaseColour(bool isDark)
+        {
+            ITheme theme = _paletteHelper.GetTheme();
+            IBaseTheme baseTheme = isDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseTheme);
+            _paletteHelper.SetTheme(theme);
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+            CustomColorTheme md = Application.Current.Resources.MergedDictionaries[0] as CustomColorTheme;
+
+            if (md.BaseTheme == BaseTheme.Light)
+            {
+                md.BaseTheme = BaseTheme.Dark;
+            }
+            else
+            {
+                md.BaseTheme = BaseTheme.Light;
+            }
+
+            Application.Current.Resources.MergedDictionaries[0] = md;
 
         }
     }
