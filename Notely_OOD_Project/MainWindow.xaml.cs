@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,9 +29,14 @@ namespace Notely_OOD_Project
     
     public partial class MainWindow : Window
     {
-       internal List<Note> notes = new List<Note>();
+       
         int styleControl = 0;
         int sortControl = 0;
+
+
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();//kmm 15/3/22
+
+        internal List<Note> notes = new List<Note>();
         public MainWindow()
         {
             InitializeComponent();
@@ -684,6 +690,38 @@ namespace Notely_OOD_Project
             options.ShowDialog();
 
 
+
+
+
+        }
+
+
+        private void ToggleBaseColour(bool isDark)
+        {
+            ITheme theme = _paletteHelper.GetTheme();
+            IBaseTheme baseTheme = isDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseTheme);
+            _paletteHelper.SetTheme(theme);
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+            CustomColorTheme md = Application.Current.Resources.MergedDictionaries[0] as CustomColorTheme;
+
+            if (md.BaseTheme == BaseTheme.Light)
+            {
+                md.BaseTheme = BaseTheme.Dark;
+            }
+            else
+            {
+                md.BaseTheme = BaseTheme.Light;
+            }
+
+            Application.Current.Resources.MergedDictionaries[0] = md;
+
         }
     }
 }
+    
+

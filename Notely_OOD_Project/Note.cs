@@ -9,8 +9,6 @@ namespace Notely_OOD_Project
   
     public class Note : IComparable
     {
-       
-
         public string Title { get; set; }
         public Priority Prior { get; set; }
         public DateTime CompleationDate { get; set; }
