@@ -40,15 +40,13 @@
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" Margin="25" Orientation="Horizontal">
-            <TextBlock Text="Fonts :"   HorizontalAlignment="Center" ></TextBlock>
-            <RadioButton x:Name="rbFont1" Content="Font1" Grid.Row="1" Margin="5" GroupName="Style" ></RadioButton>
-            <RadioButton x:Name="rbFont2" Content="Font2" Grid.Row="1" Margin="5" GroupName="Style"></RadioButton>
+            <TextBlock Text="Fonts :"   HorizontalAlignment="Center" Margin="0 0 20 0" ></TextBlock>
+            <ComboBox Name="comboBxFont" Width="100" ></ComboBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" Margin="25" Orientation="Horizontal">
             <TextBlock Text="Display :"   HorizontalAlignment="Center" ></TextBlock>
-            <RadioButton GroupName="Mode" x:Name="rbLight" Content="Light" Grid.Row="1" Margin="5"></RadioButton>
-            <RadioButton GroupName="Mode" x:Name="rbDark" Content="Dark" Grid.Row="1" Margin="5"></RadioButton>
+            <CheckBox x:Name="cb" Content="Change Theme" Grid.Row="1" Margin="5" Click="cb_Clicked"/>
         </WrapPanel>
 
 

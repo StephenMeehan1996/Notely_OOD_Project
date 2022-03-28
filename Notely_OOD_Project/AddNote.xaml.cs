@@ -33,16 +33,16 @@ namespace Notely_OOD_Project
         {
             string[] priorities = { "Relaxed", "Important", "Urgent", "Critical" };
             comboPriorityAdd.ItemsSource = priorities;
+            
 
         }
 
         private void btnCreateNote_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = this.Owner as MainWindow;
+    
 
-            
-
-            Note addNote = new Note(txtBTitleAdd.Text, GetPriority(), datePickerAdd.SelectedDate.GetValueOrDefault(), txtBContentAdd.Text);
+            Note addNote = new Note(txtBTitleAdd.Text, GetPriority(), datePickerAdd.SelectedDate.GetValueOrDefault(), txtBContentAdd.Text, GetImageLocation(GetPriority()) );
 
             MessageBox.Show(addNote.ToString());
            // MessageBox.Show()
@@ -58,6 +58,8 @@ namespace Notely_OOD_Project
 
             this.Close();
         }
+
+        // move methods below to class // 
 
         private Note.Priority GetPriority()
         {
@@ -82,6 +84,32 @@ namespace Notely_OOD_Project
             }
 
             return selected;
+        }
+
+        public string GetImageLocation(Note.Priority hold)
+        {
+            string image = "hold";
+
+            if (hold == Note.Priority.Relaxed)
+            {
+                image = "images/relaxedW.png";
+
+            }
+            else if (hold == Note.Priority.Important)
+            {
+                image = "images/importantW.png";
+            }
+            else if (hold == Note.Priority.Urgent)
+            {
+                image = "images/urgentW.png";
+            }
+            else if (hold == Note.Priority.Critical)
+            {
+                image = "images/criticalW.png";
+            }
+
+            return image;
+
         }
     }
 }

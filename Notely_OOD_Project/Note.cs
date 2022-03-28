@@ -14,7 +14,7 @@ namespace Notely_OOD_Project
         public DateTime CompleationDate { get; set; }
         public string Content { get; set; }
 
-        
+        public string ImageLocation { get; set; }
 
      public enum Priority
     {
@@ -25,12 +25,13 @@ namespace Notely_OOD_Project
 
     }
        
-    public Note(string title, Priority prior, DateTime compleationDate, string content )
+    public Note(string title, Priority prior, DateTime compleationDate, string content, string imageLocation)
         {
             this.Title = title;
             this.Prior = prior;
             this.CompleationDate = compleationDate;
             this.Content = content;
+            this.ImageLocation = imageLocation;
 
         }
 
@@ -38,9 +39,9 @@ namespace Notely_OOD_Project
         {
 
         }
+     
 
         
-
         public override string ToString()
         {
             // use of short date string can be changed//
@@ -49,10 +50,18 @@ namespace Notely_OOD_Project
             return string.Format($"Title: {Title} - {CompleationDate.ToShortDateString()} | Content: {Content}");
         }
 
+     
+
+        // dont need // 
         public int CompareTo(object obj)
         {
             Note otherNote = obj as Note;
             return this.Prior.CompareTo(otherNote.Prior);
+        }
+
+        public void testc()
+        {
+
         }
     }
 }

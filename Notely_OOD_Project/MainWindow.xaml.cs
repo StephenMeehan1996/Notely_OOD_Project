@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
 namespace Notely_OOD_Project
 {
     /// <summary>
@@ -34,8 +35,6 @@ namespace Notely_OOD_Project
         int sortControl = 0;
 
 
-        private readonly PaletteHelper _paletteHelper = new PaletteHelper();//kmm 15/3/22
-
         internal List<Note> notes = new List<Note>();
         public MainWindow()
         {
@@ -43,7 +42,7 @@ namespace Notely_OOD_Project
             //Button but = new Button();
             //but.Content = "test";
             //mainGrid.Children.Add(but);
-            
+           
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -63,6 +62,8 @@ namespace Notely_OOD_Project
 
             DisableEdit();
 
+            tbTitle.Foreground = new SolidColorBrush(Colors.Beige);
+
 
 
             string[] priorities = { "Relaxed", "Important", "Urgent", "Critical" };
@@ -74,7 +75,11 @@ namespace Notely_OOD_Project
 
             listBxNoteBoard.ItemsSource = notes;
 
-            
+        
+
+
+
+
 
         }
 
@@ -98,8 +103,9 @@ namespace Notely_OOD_Project
                 int index = ran.Next(0, titles.Count);
                 int numDays = ran.Next(0, 20);
                 int priorIndex = ran.Next(0, 3);
+                Note.Priority holder = PriorityOffDays(numDays);
 
-                notes.Add(new Note(titles[index], PriorityOffDays(numDays), DateTime.Now.AddDays(numDays), content[index]));
+                notes.Add(new Note(titles[index], holder, DateTime.Now.AddDays(numDays), content[index], GetImageLocation(holder)));
 
                 titles.Remove(titles[index]);
                 content.Remove(content[index]);
@@ -108,7 +114,7 @@ namespace Notely_OOD_Project
         }
 
         // conditional statement assigns Priority based on how many there is to complete note// 
-        private Note.Priority PriorityOffDays( int index)
+        private Note.Priority PriorityOffDays(int index)
         {
             Note.Priority p = Note.Priority.Relaxed;
 
@@ -134,6 +140,33 @@ namespace Notely_OOD_Project
             }
 
             return p;
+        }
+
+
+        public string GetImageLocation(Note.Priority hold)
+        {
+            string image = "hold";
+
+            if (hold == Note.Priority.Relaxed)
+            {
+                image = "images/relaxedW.png";
+
+            }
+            else if (hold == Note.Priority.Important)
+            {
+                image = "images/importantW.png";
+            }
+            else if (hold == Note.Priority.Urgent)
+            {
+                image = "images/urgentW.png";
+            }
+            else if (hold == Note.Priority.Critical)
+            {
+                image = "images/criticalW.png";
+            }
+
+            return image;
+
         }
         #endregion
 
@@ -312,6 +345,7 @@ namespace Notely_OOD_Project
 
                 selectedNote.CompleationDate = datePicker.SelectedDate.GetValueOrDefault();
                 selectedNote.Prior = GetPriority();
+                selectedNote.ImageLocation = GetImageLocation(selectedNote.Prior);
                 selectedNote.Content = txtBContent.Text;
 
                 comboDisplay.SelectedItem = "All";
@@ -675,6 +709,15 @@ namespace Notely_OOD_Project
             if (aw > 1000)
             {
                 StackPanelDetails.HorizontalAlignment = HorizontalAlignment.Center;
+                stackBtn.HorizontalAlignment = HorizontalAlignment.Center;
+                tbTitle.HorizontalAlignment = HorizontalAlignment.Center;
+
+            }
+            if (aw < 1000)
+            {
+                StackPanelDetails.HorizontalAlignment = HorizontalAlignment.Right;
+                stackBtn.HorizontalAlignment = HorizontalAlignment.Right;
+                tbTitle.HorizontalAlignment = HorizontalAlignment.Right;
 
             }
         }
@@ -696,31 +739,7 @@ namespace Notely_OOD_Project
         }
 
 
-        private void ToggleBaseColour(bool isDark)
-        {
-            ITheme theme = _paletteHelper.GetTheme();
-            IBaseTheme baseTheme = isDark ? new MaterialDesignDarkTheme() : (IBaseTheme)new MaterialDesignLightTheme();
-            theme.SetBaseTheme(baseTheme);
-            _paletteHelper.SetTheme(theme);
-        }
-
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
-        {
-
-            CustomColorTheme md = Application.Current.Resources.MergedDictionaries[0] as CustomColorTheme;
-
-            if (md.BaseTheme == BaseTheme.Light)
-            {
-                md.BaseTheme = BaseTheme.Dark;
-            }
-            else
-            {
-                md.BaseTheme = BaseTheme.Light;
-            }
-
-            Application.Current.Resources.MergedDictionaries[0] = md;
-
-        }
+       
     }
 }
     
