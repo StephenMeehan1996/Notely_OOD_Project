@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 
 
@@ -44,21 +45,18 @@ namespace Notely_OOD_Project
             //mainGrid.Children.Add(but);
            
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Note note1 = new Note("Study for Maths Test", Note.Priority.Important, new DateTime(2022, 01, 31), "Study for Exam");
             //Note note2 = new Note("Go for Run", Note.Priority.Relaxed, new DateTime(2022, 02, 02), "Go For Run in the woods");
             //Note note3 = new Note("Complete Web Dev Project", Note.Priority.Critical, new DateTime(2022, 02, 17), "Complete and upload build to Git");
             //Note note4 = new Note("Complete OOD LabSheet", Note.Priority.Urgent, new DateTime(2022, 02, 05), "Complete and upload this weeks labsheet");
-            
 
-            CreateRandomNotes();
-            // returns list of random notes // 
-            //notes.Add(note1);
-            //notes.Add(note2);
-            //notes.Add(note3);
-            //notes.Add(note4);
+
+            //  CreateRandomNotes();
+
+            GetDataFromDB();
+
 
             DisableEdit();
 
@@ -74,12 +72,17 @@ namespace Notely_OOD_Project
             comboDisplay.SelectedItem = "All";
 
             listBxNoteBoard.ItemsSource = notes;
+        }
 
-        
+        private void GetDataFromDB()
+        {
+            // pulls notes from DB
 
+            NoteData db = new NoteData();
+            var query = from n in db.notes
+                        select n;
 
-
-
+            notes = query.ToList();
 
         }
 
@@ -89,6 +92,8 @@ namespace Notely_OOD_Project
         // adds the random objects into list declared at top//
         private void CreateRandomNotes()
         {
+            // Method not in use as Project now uses Database to store Data // 
+
             string[] t = { "Make Bed", "Study for Maths Test", "Tidy the House", "Go for a walk", "Complete Web Dev Project", "Write In Journal", "Prepare Dinner", "Do the Weekly Shop" };
             string[] c = { "Get Up five minutes early to make bed", "Continue studying Q1-3 for exam", "Spend 30 minutes cleaning the house", "Take 1 hour out, to go for walk", "Upload build of project to Git - Finish report", "Write weekly update in Journal", "Prepare Dinner for the next 3 days", "complete shopping for the week" };
 
@@ -196,15 +201,12 @@ namespace Notely_OOD_Project
 
             txtBTime.Text = selectedNote.CompleationDate.TimeOfDay.ToString();
             txtBContent.Text = selectedNote.Content;
-
-            
         }
 
        
 
         private Note.Priority GetPriority()
         {
-
             // method to return Enum Priority to edit notes //
             Note.Priority selected = Note.Priority.Critical;
 
@@ -326,7 +328,6 @@ namespace Notely_OOD_Project
                 
             }
 
-         
             // calls create card passing filtered list, cards are then rendered from that list// 
             // add note works similar , calling if stylecontrol = 0, rendering out the new note that was added to the list// 
             // adding event listeners for clicks on the notes?? 
@@ -347,6 +348,20 @@ namespace Notely_OOD_Project
                 selectedNote.Prior = GetPriority();
                 selectedNote.ImageLocation = GetImageLocation(selectedNote.Prior);
                 selectedNote.Content = txtBContent.Text;
+
+                NoteData db = new NoteData();
+                var query = from n in db.notes
+                            where n.id.Equals(selectedNote.id)
+                            select n;
+               
+
+                // converts query to single element for deletion// 
+                var result = query.FirstOrDefault();
+
+                // deletes old version of the note and add new one// 
+                db.notes.Remove(result);
+                db.notes.Add(selectedNote);
+                db.SaveChanges();
 
                 comboDisplay.SelectedItem = "All";
                 listBxNoteBoard.ItemsSource = null;
@@ -435,10 +450,6 @@ namespace Notely_OOD_Project
             //    RenderCards();
             //}
 
-
-
-
-
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -447,6 +458,21 @@ namespace Notely_OOD_Project
 
             if (selected != null)
             {
+                NoteData db = new NoteData();
+                var query = from n in db.notes
+                            where n.id.Equals(selected.id)
+                            select n;
+
+                // converts query to single element for deletion// 
+               var result = query.FirstOrDefault();
+
+                MessageBox.Show(query.ToString());
+
+                // remove from DB
+                db.notes.Remove(result);
+                db.SaveChanges();
+
+             // removes from notes list
                 notes.Remove(selected);
                 listBxNoteBoard.ItemsSource = null;
                 listBxNoteBoard.ItemsSource = notes;
@@ -483,8 +509,6 @@ namespace Notely_OOD_Project
         {
 
             RenderCards();
-
-          
 
         }
 
@@ -524,7 +548,7 @@ namespace Notely_OOD_Project
 
                 mainGrid.Children.Add(myScrollViewer);
                 Grid.SetColumn(myScrollViewer, 0);
-                Grid.SetRow(myScrollViewer, 2);
+                Grid.SetRow(myScrollViewer, 3);
                 Grid.SetColumnSpan(myScrollViewer, 4);
                 //Grid.SetRowSpan(myScrollViewer, 4);
 
@@ -537,8 +561,6 @@ namespace Notely_OOD_Project
                     {
                         BorderBrush = new SolidColorBrush(Color.FromRgb(26, 26, 64)),
                         BorderThickness = new Thickness(1),
-                        
-                       
                     };
 
                     TextBlock title = new TextBlock

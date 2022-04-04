@@ -51,10 +51,20 @@ namespace Notely_OOD_Project
             // add to list// 
             main.notes.Add(addNote);
 
+            NoteData db = new NoteData();
+
+            using (db)
+            {
+                db.notes.Add(addNote);
+
+                db.SaveChanges();
+
+            }
 
 
-             //main.listBxNoteBoard.ItemsSource = null;
-             //main.listBxNoteBoard.ItemsSource = main.notes;
+
+            //main.listBxNoteBoard.ItemsSource = null;
+            //main.listBxNoteBoard.ItemsSource = main.notes;
 
             this.Close();
         }
