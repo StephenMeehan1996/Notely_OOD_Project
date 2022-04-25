@@ -19,8 +19,7 @@
             <ComboBox x:Name="comboPriorityAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
             <DatePicker x:Name="datePickerAdd" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="120" RenderTransformOrigin="0.5,0.5"/>
-            <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
-            <TextBox x:Name="txtBTimeAdd" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            
             <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" FontFamily="UD Digi Kyokasho NP-B"/>
             <TextBox x:Name="txtBContentAdd" HorizontalAlignment="Left" Height="90"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
             <Button x:Name="btnCreateNote" Content="Add Note" HorizontalAlignment="Center"  VerticalAlignment="Top"  Click="btnCreateNote_Click"/>

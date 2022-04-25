@@ -42,11 +42,7 @@ namespace Notely_OOD_Project
             MainWindow main = this.Owner as MainWindow;
     
 
-            Note addNote = new Note(txtBTitleAdd.Text, GetPriority(), datePickerAdd.SelectedDate.GetValueOrDefault(), txtBContentAdd.Text, GetImageLocation(GetPriority()) );
-
-            MessageBox.Show(addNote.ToString());
-           // MessageBox.Show()
-           
+            Note addNote = new Note(txtBTitleAdd.Text, GetPriority(), datePickerAdd.SelectedDate.GetValueOrDefault(), txtBContentAdd.Text, GetImageLocation(GetPriority()));
 
             // add to list// 
             main.notes.Add(addNote);
@@ -56,13 +52,9 @@ namespace Notely_OOD_Project
             using (db)
             {
                 db.notes.Add(addNote);
-
                 db.SaveChanges();
 
             }
-
-
-
             //main.listBxNoteBoard.ItemsSource = null;
             //main.listBxNoteBoard.ItemsSource = main.notes;
 

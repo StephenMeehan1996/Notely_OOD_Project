@@ -61,8 +61,7 @@
                 <ComboBox x:Name="comboPriority" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.003,0.929" />
                 <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top"/>
                 <DatePicker x:Name="datePicker" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="120"/>
-                <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Time:" VerticalAlignment="Top" />
-                <TextBox x:Name="txtBTime" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                
                 <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Content:" VerticalAlignment="Top" />
                 <TextBox x:Name="txtBContent" HorizontalAlignment="Left" Height="90"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
 

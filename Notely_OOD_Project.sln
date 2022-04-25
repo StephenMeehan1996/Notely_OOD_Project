@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notely_OOD_Project", "Notel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "DataManager\DataManager.csproj", "{B6DE1D9C-2A7A-49A0-A152-9C77B8B9D6C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTesting", "Testing\ProjectTesting.csproj", "{A896B3E1-4016-4FD7-B1D0-6D23D61AFD81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projectTesting_Tests", "projectTesting_Tests\projectTesting_Tests.csproj", "{3E0D8CDB-4048-4F1B-8E08-03DC43F21F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B6DE1D9C-2A7A-49A0-A152-9C77B8B9D6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6DE1D9C-2A7A-49A0-A152-9C77B8B9D6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6DE1D9C-2A7A-49A0-A152-9C77B8B9D6C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A896B3E1-4016-4FD7-B1D0-6D23D61AFD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A896B3E1-4016-4FD7-B1D0-6D23D61AFD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A896B3E1-4016-4FD7-B1D0-6D23D61AFD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A896B3E1-4016-4FD7-B1D0-6D23D61AFD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E0D8CDB-4048-4F1B-8E08-03DC43F21F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0D8CDB-4048-4F1B-8E08-03DC43F21F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0D8CDB-4048-4F1B-8E08-03DC43F21F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0D8CDB-4048-4F1B-8E08-03DC43F21F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

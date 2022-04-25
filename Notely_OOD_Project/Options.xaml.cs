@@ -26,7 +26,6 @@ namespace Notely_OOD_Project
     /// </summary>
     public partial class Options : Window
     {
-        
         public Options()
         {
             InitializeComponent();
@@ -35,24 +34,11 @@ namespace Notely_OOD_Project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
+            // coverts all system fonts as items in combo box 
             var fontList = Fonts.SystemFontFamilies;
             comboBxFont.ItemsSource = fontList.ToList();
 
         }
-        //private void btnSave_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (rbLight.IsChecked == true)
-        //    {
-
-        //        //MaterialDesignColors.PrimaryColor = new PrimaryColor(Color.FromRgb(0, 0, 0));
-
-
-
-
-        //    }
-        //}
 
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();//kmm 15/3/22
 
@@ -67,6 +53,7 @@ namespace Notely_OOD_Project
 
         private void cb_Clicked(object sender, RoutedEventArgs e)
         {
+            //controls the theme change and image color
             MainWindow main = this.Owner as MainWindow;
             CustomColorTheme md = Application.Current.Resources.MergedDictionaries[0] as CustomColorTheme;
             
@@ -131,7 +118,7 @@ namespace Notely_OOD_Project
                     main.listBxNoteBoard.ItemsSource = null;
                     main.listBxNoteBoard.ItemsSource = main.notes;
 
-                 
+
 
                 }
             }
@@ -151,9 +138,6 @@ namespace Notely_OOD_Project
             {
                 main.FontFamily = new FontFamily(selectedFont.ToString());
             }
-            
-
-           
 
             this.Close();
         }
