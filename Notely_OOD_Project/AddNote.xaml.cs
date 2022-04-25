@@ -31,6 +31,7 @@ namespace Notely_OOD_Project
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // added priories as items on combo box
             string[] priorities = { "Relaxed", "Important", "Urgent", "Critical" };
             comboPriorityAdd.ItemsSource = priorities;
             
@@ -40,10 +41,7 @@ namespace Notely_OOD_Project
         private void btnCreateNote_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = this.Owner as MainWindow;
-    
-
             Note addNote = new Note(txtBTitleAdd.Text, GetPriority(), datePickerAdd.SelectedDate.GetValueOrDefault(), txtBContentAdd.Text, GetImageLocation(GetPriority()));
-
             // add to list// 
             main.notes.Add(addNote);
 
@@ -55,18 +53,13 @@ namespace Notely_OOD_Project
                 db.SaveChanges();
 
             }
-            //main.listBxNoteBoard.ItemsSource = null;
-            //main.listBxNoteBoard.ItemsSource = main.notes;
-
             this.Close();
         }
-
-        // move methods below to class // 
 
         private Note.Priority GetPriority()
         {
             Note.Priority selected = Note.Priority.Critical;
-
+            //gets priority 
             switch (comboPriorityAdd.SelectedItem)
             {
                 case "Relaxed":
@@ -90,6 +83,7 @@ namespace Notely_OOD_Project
 
         public string GetImageLocation(Note.Priority hold)
         {
+            // gets image location
             string image = "hold";
 
             if (hold == Note.Priority.Relaxed)
